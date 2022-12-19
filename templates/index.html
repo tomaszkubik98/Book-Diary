@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-9">
+            <div class="row mb-5">
+                <div class="col text-start">
+                    <p class="display-1 fs-1 fw-bold">Ultimate library with book list</p>
+                    <p class="display-2 fs-4 fw-bolder">Upgrade your reading exprerience</p>
+                </div>
+                <div class="col">
+                    <image id="screen-image"class=""src="static/screen.png" alt="phone_img" height=300px></image>
+                </div>
+            </div>
+            <div class="row">
+            <p clss="">Set up your personal books records, <span><a href="/register">Sign Up</a></span> to create account or <span><a href="/login">Log in</a></span>.</p>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
+{% endblock %}

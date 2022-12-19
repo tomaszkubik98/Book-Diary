@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div
+  class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp');">
+  <h1 class="mb-3 h2">Quote of the day:</h1>
+  <p>
+    {{quote}}
+  </p>
+</div>
+{% endblock %}

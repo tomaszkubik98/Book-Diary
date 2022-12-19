@@ -1,0 +1,45 @@
+.body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.book.list-group-item {
+    background: #1f2630;
+}
+
+.collapsed {
+    color: white;
+}
+
+ol.book {
+    background: #575755;
+    padding: 20px;
+}
+
+ol.book li {
+    background: #cce5ff;
+    color: white;
+  }
+
+@media (max-width: 400px) {
+#img-col{
+    width:60%;
+}
+#screen-image{
+    padding-top:5rem;
+}
+}
+@media (max-width: 600px) {
+    #img-col{
+        width:40%;
+    }
+    }
+@media (min-width: 1100px) {
+#img-col{
+    width:15%;
+}
+.fs-1 {
+    font-size:4rem !important;
+   }
+
+}
+

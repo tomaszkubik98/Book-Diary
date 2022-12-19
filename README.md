@@ -1,0 +1,16 @@
+# BOOK DIARY
+#### Video Demo:  https://youtu.be/FKiDl97kybA
+#### Description:
+Book Diary is a Python web application, running on Flask. It allows users to create list of books they read, with JavaScript and Ajax server collects required data from GOOGLE BOOKS API and stores it in SQLite3 database. Web app is fully responsive by Bootstrap5.
+On the main page when user is not logged in there is a welcome page displayed with a little preview of what you can do after logging in. In the top the is a navbar displaying a logo and 2 buttons: register and login.
+In the bottom there is a footer of my name and data provider (Google Books).
+Register page requires a user to type unique username and password with a confirmation. Before submiting the form JS checks for validation, and server checks the requirements about username and password. Log in page contains same functionality.
+After registering/logging the navbar changes. It contains 3 buttons now: My list,Add book and Log out. All of which are hrefs to acording routes. User is redirected to homepage of the web app where quote of the day is displayed. Before running the app Datetime module checks for today's date and changes the quote if it is different with quote passed by the function implemented in helpers.py.
+Add book route accesed from navbar- is the key part of the project. In the middle there is a search bar displayed where user can type title and author. The users input is passed to the server live with ajax function, when its done succesfuly server returns book data from API and saves also seves it into individual temp file with json (by this way it is possible to display same data on next page). Data contains info about 3 books and is sorted into the most relevant. For each book there is a div with a form with POST method created which contains info about the books: cover image, title, author, date of publish and a button which submits the individual form. User can submit the form with POST method without typying anything into searchbox and then fill required data.
+After this there is another page called 'manually.html' which summarizes the book picked by user and allows to input 3 comments about the book. Confirming the selection and adding book with the button and the bottom finally, saves the book to database. Alse, if the book was not in the db before it is added there.
+Lastly, user can view the list of his books by accesing list route with My list button in navbar. On this page there is a clickable div with users books info for every position that is in user_books table in db.
+In project folder there are several files and directories.
+There is a directory automatically created by Flask Session module, to store each user's session localy.
+In the directory called 'temp' for every users search in the live search bar there is book data stored. App constantly overwrites old files or creates new ones for users (like 'user_1search.json'). This book data is then passed to html page in the next step of adding a book to user's list.
+Folder 'static' holds images used in the website, just like folder 'templates' holds multiple html files which extend the main file 'layout.html'.
+Last section of the project is a database. It consists of tables about users, books and user's books.

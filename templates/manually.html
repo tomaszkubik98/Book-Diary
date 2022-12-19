@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Book
+{% endblock %}
+
+{% block main %}
+<form action="/manually" method="POST" class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-10">
+            <div class="row align-items-center">
+                <div class="col">
+                    <image name="image" class="border rounded border-1 shadow-lg bg-white rounded" src={{image}} alt="book_cover"></image>
+                </div>
+                <input name="coverImageHidden" hidden value={{image}}></input>
+                <div class="col">
+                    <div class="mb-3 mt-3 row">
+                        <label for="inputTitle" class="col-sm-4 col-form-label">Title:</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputTitle" value="{{title}}" name="title" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputAuthor" class="col-sm-4 col-form-label">Author:</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputAuthor" value="{{author}}" name="author" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputPublished" class="col-sm-4 col-form-label">Published on:</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputPublished" value="{{published}}" name="published">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputCategory" class="col-sm-4 col-form-label">Category:</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputCategory" value="{{category}}" name="category">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputFinished" class="col-sm-4 col-form-label">Finished reading:</label>
+                        <div class="col-sm-8">
+                            <select name="finished" class="custom-select" id="inputFinished">
+                                <option selected>{{this_year}}</option>
+                                {% for year in years %}
+                                <option>{{year}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <p class="pt-3 pb-3">Make your reading experience better and write down 3 things about every book you finished.</p>
+        </div>
+        <div class="col">
+        </div>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-10">
+                <div class="mb-3 row">
+                    <label for="comment1" class="col-sm-2 col-form-label">1</label>
+                    <div class="col-sm-10">
+                        <textarea name="comment1" id="comment1" class="form-control list-group-item mb-2 border rounded" rows="2"></textarea>
+                    </div>
+                    <label for="comment2" class="col-sm-2 col-form-label">2</label>
+                    <div class="col-sm-10">
+                        <textarea name="comment2" id="comment2" class="form-control list-group-item mb-2 border rounded" rows="2"></textarea>
+                    </div>
+                    <label for="comment3" class="col-sm-2 col-form-label">3</label>
+                    <div class="col-sm-10">
+                        <textarea name="comment3" id="comment3" class="form-control list-group-item mb-2 border rounded" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-secondary mt-3 pb-6" style="margin-bottom: 60px" type="submit">Add book</button>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    <div>
+</form>
+
+<script>
+    var forms=document.querySelectorAll(".needs-validation");
+
+    Array.prototype.slice.call(forms).forEach( function(form)
+    {
+        form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()){
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+</script>
+{% endblock %}

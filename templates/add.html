@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block main %}
+
+<div class="row">
+    <div class="col">
+    </div>
+    <div class="col-10">
+        <form action="/add" method="POST" autocomplete="off">
+        <div class="input-group col">
+            <input type="text" autofocus autovomplete="off" class="form-control" placeholder="Title and author" id="livebox" name="livebox" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add manually</button>
+        </div>
+        </form>
+        <div id="output">
+        </div>
+        <p class="pt-3">Search for your book. If you can't find the title you are looking for, add it manually instead.</p>
+    </div>
+    <div class="col">
+    </div>
+<div>
+
+<script>
+    $(document).ready(function(){
+        $("#livebox").on("input",function(e){
+            textinsearch = $("#livebox").val();
+            $.ajax({
+                method:"post",
+                url:"/livesearch",
+                data:{text:textinsearch},
+                success:function(res){
+                    console.log(res);
+                    var data = "<div class='container list-group'>";
+                    k = 0;
+                    $.each(res,function(index,value){
+                        k += 1;
+                        div = ""
+                        div +="<form id='form"+k+"' action='/suggestion"+k+"' method='POST'>";
+                        div += "<div class='list-group-item'><div class='row'>";
+                        div += "<div class='col-3 align-items-center'><image name='image"+k+"' src="+value["image"]+"width=50px height=60px></image></div>";
+                        div += "<div class='col-4'><div class='row text-start'><a name='title"+k+"'>Title: "+value["title"]+"</a>";
+                        div += "<a name='author"+k+"'>Author: "+value["authors"]+"<a>";
+                        div += "<a name='publised"+k+"'>Published: "+value["published"]+"</div></div></a>";
+                        div += "<div class='col-3'><div class='container mt-3 align-items-center'><button class='btn btn-outline-secondary' type='submit' name='suggestion"+k+"'>ADD</button></div></div></form>"
+                        data += div
+                        data += "</div></div>"
+                    });
+                    data += "<div>";
+                    $("#output").html(data);
+                }
+            })
+        });
+    });
+</script>
+
+{% endblock %}
