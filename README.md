@@ -67,7 +67,7 @@ I decided to create self updating database using SQLite3.
 	}
 
     "books": {
-	"book_id: id,
+	"book_id": id,
 	"title": title,
 	"author": author,
 	"category": category,
