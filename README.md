@@ -30,7 +30,7 @@
 
 * Log in Page
 
-!Login](screenshots/login.png)
+![Login](screenshots/login.png)
 
 * Search for books
 
